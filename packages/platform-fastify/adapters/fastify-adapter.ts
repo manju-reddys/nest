@@ -12,7 +12,7 @@ import {
   CorsOptionsDelegate,
 } from '@nestjs/common/interfaces/external/cors-options.interface';
 import { loadPackage } from '@nestjs/common/utils/load-package.util';
-import { isUndefined, isString } from '@nestjs/common/utils/shared.utils';
+import { isString, isUndefined } from '@nestjs/common/utils/shared.utils';
 import { AbstractHttpAdapter } from '@nestjs/core/adapters/http-adapter';
 import {
   fastify,
@@ -100,6 +100,8 @@ export class FastifyAdapter<
     TRawResponse
   > = FastifyInstance<TServer, TRawRequest, TRawResponse>,
 > extends AbstractHttpAdapter<TServer, TRequest, TReply> {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   protected readonly instance: TInstance;
 
   private _isParserRegistered: boolean;
@@ -348,7 +350,7 @@ export class FastifyAdapter<
   public async close() {
     try {
       return await this.instance.close();
-    } catch (err) {
+    } catch (err: any) {
       // Check if server is still running
       if (err.code !== 'ERR_SERVER_NOT_RUNNING') {
         throw err;

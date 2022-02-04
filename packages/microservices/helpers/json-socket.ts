@@ -65,7 +65,7 @@ export class JsonSocket {
 
     try {
       this.handleData(data);
-    } catch (e) {
+    } catch (e: any) {
       this.socket.emit(ERROR_EVENT, e.message);
       this.socket.end();
     }
@@ -114,7 +114,7 @@ export class JsonSocket {
     let message: Record<string, unknown>;
     try {
       message = JSON.parse(data);
-    } catch (e) {
+    } catch (e: any) {
       throw new InvalidJSONFormatException(e, data);
     }
     message = message || {};

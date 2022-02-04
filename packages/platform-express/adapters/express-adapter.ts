@@ -26,10 +26,10 @@ import {
   json as bodyParserJson,
   urlencoded as bodyParserUrlencoded,
 } from 'body-parser';
-import * as cors from 'cors';
-import * as express from 'express';
-import * as http from 'http';
-import * as https from 'https';
+import cors from 'cors';
+import express from 'express';
+import http from 'http';
+import https from 'https';
 import { ServeStaticOptions } from '../interfaces/serve-static-options.interface';
 
 export class ExpressAdapter extends AbstractHttpAdapter {

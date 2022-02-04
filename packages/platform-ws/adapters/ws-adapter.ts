@@ -10,6 +10,7 @@ import { MessageMappingProperties } from '@nestjs/websockets/gateway-metadata-ex
 import * as http from 'http';
 import { EMPTY, fromEvent, Observable } from 'rxjs';
 import { filter, first, mergeMap, share, takeUntil } from 'rxjs/operators';
+import { URL } from 'url';
 
 let wsPackage: any = {};
 

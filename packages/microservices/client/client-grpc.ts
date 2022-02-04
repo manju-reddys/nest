@@ -6,10 +6,10 @@ import { GRPC_DEFAULT_PROTO_LOADER, GRPC_DEFAULT_URL } from '../constants';
 import { InvalidGrpcPackageException } from '../errors/invalid-grpc-package.exception';
 import { InvalidGrpcServiceException } from '../errors/invalid-grpc-service.exception';
 import { InvalidProtoDefinitionException } from '../errors/invalid-proto-definition.exception';
+import { ChannelOptions } from '../external/grpc-options.interface';
 import { ClientGrpc, GrpcOptions } from '../interfaces';
 import { ClientProxy } from './client-proxy';
 import { GRPC_CANCELLED } from './constants';
-import { ChannelOptions } from '../external/grpc-options.interface';
 
 let grpcPackage: any = {};
 let grpcProtoLoaderPackage: any = {};
@@ -289,7 +289,7 @@ export class ClientGrpcProxy extends ClientProxy implements ClientGrpc {
       const packageObject =
         grpcPackage.loadPackageDefinition(packageDefinition);
       return packageObject;
-    } catch (err) {
+    } catch (err: any) {
       const invalidProtoError = new InvalidProtoDefinitionException();
       const message =
         err && err.message ? err.message : invalidProtoError.message;

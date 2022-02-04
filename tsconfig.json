@@ -12,6 +12,8 @@
     "sourceMap": true,
     "allowJs": true,
     "outDir": "dist",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "lib": ["es7"],
     "paths": {
       "@nestjs/common": ["./packages/common"],
